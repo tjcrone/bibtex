@@ -1,0 +1,85 @@
+#!/usr/bin/env python
+# This script takes a DOI as a command line argument or a redirected file
+# with a list of DOIs and uses doi.org to generate a .bib file which is
+# output to the screen.
+#
+# Timothy Crone (tjcrone@gmail.com)
+
+#imports
+import subprocess, re, sys
+from select import select
+from unicode_dict import unicode_dict
+
+# read input dois
+dois = []
+if len(sys.argv) == 2:
+  dois.append(sys.argv[1].strip())
+else:
+  timeout = 0.1
+  rlist, _, _ = select([sys.stdin], [], [], timeout)
+  if rlist:
+    for line in sys.stdin:
+      if line[0] != '#':
+        dois.append(line.strip())
+
+#error check dois
+if len(dois) == 0:
+  sys.stdout.write("Pass a DOI as a single argument, or pipe in a file with a list of DOIs.\n")
+  raise SystemExit
+
+# get value function
+def get_value(bib, key):
+  try:
+    value = re.sub('}$', '', bib.split('%s={' % key)[1].split('}, ')[0])
+    for i in re.sub('[ -~]', '', value):
+      value = value.replace(i, unicode_dict[i])
+  except:
+    value = ''
+  return value
+
+# loop through dois
+for doi in dois:
+  # get raw bib entry
+  cmd = ('curl -s -LH "Accept: text/bibliography; style=bibtex" "http://dx.doi.org/%s"' % doi)
+  p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
+  bib = p.communicate()[0].decode("utf-8").strip()[:-1]
+  #print bib.encode("utf-8").strip()
+
+  # extract components of entry
+  try:
+    entry = re.sub('}$', '', bib.split('{',1)[0].split('@')[1]).capitalize()
+  except:
+    entry = False
+  author = get_value(bib, 'author')
+  journal = get_value(bib, 'journal')
+  year = get_value(bib, 'year')
+  volume = get_value(bib, 'volume')
+  number = get_value(bib, 'number')
+  pages = get_value(bib, 'pages')
+  doi = get_value(bib, 'DOI')
+  publisher = get_value(bib, 'publisher')
+  title = get_value(bib, 'title')
+
+  # simplify author for key
+  author_simple = author.split(', ',1)[0].replace('}','').replace('{','')
+  author_simple = re.sub('\\\.','',author_simple)
+
+  # enclose consecutive caps in braces
+  publisher = re.sub('([A-Z]{2,})', r'{\1}', publisher)
+  title = re.sub('([A-Z]{2,})', r'{\1}', title)
+
+  # print entry
+  if entry:
+    sys.stdout.write('@%s{%s%s,\n' % (entry, author_simple, year))
+    sys.stdout.write('  author    = {%s},\n' % author)
+    sys.stdout.write('  title     = {%s},\n' % title)
+    sys.stdout.write('  journal   = {%s},\n' % journal)
+    sys.stdout.write('  year      = {%s},\n' % year)
+    sys.stdout.write('  volume    = {%s},\n' % volume)
+    sys.stdout.write('  number    = {%s},\n' % number)
+    if "n/a" not in pages:
+      sys.stdout.write('  pages     = {%s},\n' % pages)
+    sys.stdout.write('  doi       = {%s},\n' % doi)
+    sys.stdout.write('  publisher = {%s},\n' % publisher)
+    sys.stdout.write('}\n')
+    sys.stdout.write('\n')
