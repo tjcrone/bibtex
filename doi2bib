@@ -51,19 +51,30 @@ for doi in dois:
   except:
     entry = False
   author = get_value(bib, 'author')
-  journal = get_value(bib, 'journal')
+  journal = get_value(bib, 'journal').replace('&', '{\&}')
   year = get_value(bib, 'year')
+  month = get_value(bib, 'month').capitalize()
   volume = get_value(bib, 'volume')
   number = get_value(bib, 'number')
   pages = get_value(bib, 'pages')
   doi = get_value(bib, 'DOI')
-  publisher = get_value(bib, 'publisher')
-  title = get_value(bib, 'title')
+  publisher = get_value(bib, 'publisher').replace('&', '{\&}')
+  title = get_value(bib, 'title').replace('&', '{\&}')
 
   # simplify author for key
   author_simple = author.split(', ',1)[0].replace('}','').replace('{','')
   author_simple = re.sub('\\\.','',author_simple)
   author_simple = re.sub(' *','',author_simple)
+  if author_simple.isupper():
+    author_simple = author_simple.lower().capitalize()
+
+  # reorder author
+  reauthor = []
+  for i in author.split('and'):
+    last = i.split(',', 1)[0].strip()
+    first = i.split(',', 1)[1].strip()
+    reauthor.append(first + ' ' + last)
+  author = ' and '.join(reauthor)
 
   # enclose consecutive and title caps in braces
   if len(publisher) > 0:
