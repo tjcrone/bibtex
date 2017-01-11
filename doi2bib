@@ -63,6 +63,7 @@ for doi in dois:
   # simplify author for key
   author_simple = author.split(', ',1)[0].replace('}','').replace('{','')
   author_simple = re.sub('\\\.','',author_simple)
+  author_simple = re.sub(' *','',author_simple)
 
   # enclose consecutive and title caps in braces
   if len(publisher) > 0:
