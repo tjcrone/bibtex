@@ -30,7 +30,7 @@ if len(dois) == 0:
 # get value function
 def get_value(bib, key):
   try:
-    value = re.sub('}$', '', bib.split('%s={' % key)[1].split('}, ')[0])
+    value = re.sub('}$', '', bib.split('%s={' % key)[1].encode("utf-8").split('}, ')[0]).decode("utf-8")
     for i in re.sub('[ -~]', '', value):
       value = value.replace(i, unicode_dict[i])
   except:
@@ -47,6 +47,7 @@ for doi in dois:
   p = subprocess.Popen(cmd, stdout=subprocess.PIPE, shell=True)
   bib = p.communicate()[0].decode("utf-8").strip()[:-1]
   #print bib.encode("utf-8").strip()
+  #raise SystemExit
 
   # extract components of entry
   try:

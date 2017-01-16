@@ -2,6 +2,7 @@
 # XSL for conversion: https://gist.github.com/798546
 
 unicode_dict = {
+    u"\xa0": " ",
     u"\u0023": "\\#",
     u"\u0024": "\\textdollar ",
     u"\u0025": "\\%",
