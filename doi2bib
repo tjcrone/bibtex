@@ -74,13 +74,14 @@ for doi in dois:
 
   # reorder author
   reauthor = []
-  for i in author.split(' and '):
-    if i == u'et al.':
-      name = i
-    else:
-      name = i.split(',', 1)[1].strip() + ' ' + i.split(',', 1)[0].strip()
-    reauthor.append(name)
-  author = ' and '.join(reauthor)
+  if len(author) > 0:
+    for i in author.split(' and '):
+      if i == u'et al.':
+        name = i
+      else:
+        name = i.split(',', 1)[1].strip() + ' ' + i.split(',', 1)[0].strip()
+      reauthor.append(name)
+    author = ' and '.join(reauthor)
 
   # enclose consecutive and title caps in braces
   if len(publisher) > 0:
