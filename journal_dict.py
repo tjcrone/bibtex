@@ -15198,11 +15198,11 @@ journal_dict = {
     "Zygote": "Zygote",
 
     # tjc additions
-    "68th EAGE Conference and Exhibition incorporating SPE EUROPEC 2006": "68th EAGE Conference and Exhibition incorporating SPE EUROPEC 2006",
+    "68th EAGE Conference and Exhibition incorporating SPE EUROPEC 2006": "68th EAGE Conf. and Exhib.",
     "AIAA Journal": "AIAA J.",
     "Advances in Marine Biology": "Adv. Mar. Biol.",
     "Aquatic Mammals": "Aquat. Mamm.",
-    "Biol. Zentralbl.": "Biol. Zentralbl.",
+    "Biologisches Zentralblatt": "Biol. Zent.",
     "Bulletin of the International Association of Scientific Hydrology": "Bull. Int. Assoc. Sci. Hydrol.",
     "Cahiers de Biologie Marine": "Cah. Biol. Mar.",
     "Computers {\&} Geosciences": "Comput. Geosci.",
@@ -15235,6 +15235,6 @@ journal_dict = {
     "Proceedings of the National Academy of Sciences": "Proc. Natl. Acad. Sci.",
     "U.S. Geological Survey Underground-Water Papers": "U.S. Geol. Surv. Underground-Water Pap.",
     "Proceedings of the IEEE Oceans 95 Conference": "Proc. IEEE Oceans 95 Conf.",
-    "Vierteljahrsschrift der Naturforschenden Gesellschaft in Z{\\\"{u}}rich": "Vierteljahrsschrift der Naturforschenden Gesellschaft in Z{\\\"{u}}rich",
+    "Vierteljahrsschrift der Naturforschenden Gesellschaft in Z{\\\"{u}}rich": "Vierteljahresschr. Naturforsch. Ges. Z{\\\"{u}}rich",
     "Special Paper 349: Ophiolites and oceanic crust: new insights from field studies and the Ocean Drilling Program": "Special Paper 349: Ophiolites and oceanic crust: new insights from field studies and the Ocean Drilling Program",
 }
