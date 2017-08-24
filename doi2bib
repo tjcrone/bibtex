@@ -84,7 +84,8 @@ for doi in dois:
     author = ' and '.join(reauthor)
 
   # remove periods from author initials
-  author = author.replace('.','')
+  author = author.replace('.',' ')
+  author = author.replace('  ',' ')
 
   # enclose consecutive and title caps in braces
   if len(publisher) > 0:
