@@ -8893,7 +8893,7 @@ journal_dict = {
     "Journal of Testing and Evaluation": "J. Test. Eval.",
     "Journal of Texture Studies": "J. Texture Stud.",
     "Journal of the ACM": "J. ACM",
-    "Journal of the Acoustical Society of America": "J. Acoust. Soc. Am.",
+    "The Journal of the Acoustical Society of America": "J. Acoust. Soc. Am.",
     "Journal of the Aeronautical Sciences": "J. Aeronaut. Sci.",
     "Journal of the Air and Waste Management Association": "J. Air Waste Manage. Assoc.",
     "Journal of the Air Pollution Control Association": "J. Air Pollut. Control Assoc.",
