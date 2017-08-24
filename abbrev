@@ -1,0 +1,29 @@
+#!/usr/bin/env python
+# This script converts full journal titles to abbreviated journal titles in bibtex
+# files. Pass the name of a bibtex file as the sole command line argument. Results
+# are printed to stdout.
+
+#imports
+import sys
+from journal_dict import journal_dict
+
+# parse argument
+try:
+  bib_file = sys.argv[1].strip()
+except:
+  sys.stdout.write("Error: Pass a bibtex file as a single argument.\n")
+  raise SystemExit
+
+# loop through file
+with open(bib_file, "r") as f:
+  for line in f:
+    if "journal" in line.split("=")[0]:
+      journal = (line.split("{", 1)[1])[:-3]
+      try:
+        journal_abbrev = journal_dict[journal]
+        sys.stdout.write("  journal      = {%s},\n" % journal_abbrev)
+      except:
+        sys.stderr.write("Warning: No abbreviation for %s.\n" % journal )
+        sys.stdout.write("  journal      = {%s},\n" % journal)
+    else:
+      print line.rstrip()
