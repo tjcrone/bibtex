@@ -1,7 +1,8 @@
+# coding=utf-8
 # original XML at http://www.w3.org/Math/characters/unicode.xml
 # XSL for conversion: https://gist.github.com/798546
 
-unicode_dict = {
+journal_dict = {
     "2D Materials": "2D Mater.",
     "3D Printing and Additive Manufacturing": "3D Print. Addit. Manuf.",
     "AACN Clinical Issues": "AACN Clin. Issues",
