@@ -4667,7 +4667,7 @@ journal_dict = {
     "Enzyme and Protein": "Enzyme Protein",
     "Enzymologia": "Enzymologia",
     "Enzymologia Biologica et Clinica": "Enzymol. Biol. Clin. (Basel)",
-    "Eos, Transactions, American Geophysical Union (EOS)": "Eos, Trans. Amer. Geophys. Union",
+    "EOS Transactions of the American Geophysical Union": "EOS Trans. AGU",
     "Epatologia": "Epatologia",
     "Epheta: Revista de Enfermeria y Accion Social": "Epheta",
     "Epidemiologia e Prevenzione": "Epidemiol. Prev.",
