@@ -1,0 +1,23 @@
+#!/usr/bin/env python
+#
+# This is a throw-away script that I use to clean BibTeX files as
+# needed. I adapt this script for the clean-up problem at hand.
+
+#imports
+import sys
+
+# parse argument
+try:
+  bib_file = sys.argv[1].strip()
+except:
+  sys.stdout.write("Error: Pass a bibtex file as a single argument.\n")
+  raise SystemExit
+
+# loop through file and do something
+with open(bib_file, "r") as f:
+  for line in f:
+    if "author" in line.split("=")[0]:
+      author = (line.split("{", 1)[1])[:-3].replace('.','')
+      sys.stdout.write("  author       = {%s},\n" % author)
+    else:
+      print line.rstrip()
