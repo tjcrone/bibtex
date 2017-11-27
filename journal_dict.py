@@ -15236,4 +15236,5 @@ journal_dict = {
     "U.S. Geological Survey Underground-Water Papers": "U.S. Geol. Surv. Underground-Water Pap.",
     "Proceedings of the IEEE Oceans 95 Conference": "Proc. IEEE Oceans 95 Conf.",
     "Vierteljahrsschrift der Naturforschenden Gesellschaft in Z{\\\"{u}}rich": "Vierteljahresschr. Naturforsch. Ges. Z{\\\"{u}}rich",
+    "IEEE Journal of Oceanic Engineering": "IEEE J. Oceanic Eng.",
 }
