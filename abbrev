@@ -26,4 +26,4 @@ with open(bib_file, "r") as f:
         sys.stderr.write("Warning: No abbreviation for %s.\n" % journal )
         sys.stdout.write("  journal      = {%s},\n" % journal)
     else:
-      print line.rstrip()
+      print(line.rstrip())
